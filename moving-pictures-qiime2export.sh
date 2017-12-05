@@ -15,12 +15,14 @@ mkdir qiime-exported
 # copy mapping file to exported file
 cp qiime2-moving-pictures-tutorial/sample-metadata.tsv qiime-exported/
 
-# export data from qza
-qiime tools export taxonomy.qza --output-dir qiime-exported
-qiime tools export rooted-tree.qza --output-dir qiime-exported
-qiime tools export table.qza --output-dir qiime-exported
+cd qiime2-moving-pictures-tutorial/
 
-cd qiime-exported/
+# export data from qza
+qiime tools export taxonomy.qza --output-dir ../qiime-exported
+qiime tools export rooted-tree.qza --output-dir ../qiime-exported
+qiime tools export table.qza --output-dir ../qiime-exported
+
+cd ../qiime-exported/
 
 # add taxonomy to biom table
-biom add-metadata -i feature-table.biom -o table.biom --observation-metadata-fp taxNoHeader.tsv --observation-header OTUID,taxonomy,confidence
+biom add-metadata -i feature-table.biom -o table.biom --observation-metadata-fp taxonomy.tsv --observation-header OTUID,taxonomy,confidence
