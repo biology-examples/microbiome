@@ -1,0 +1,50 @@
+## qiime2 software installation
+
+## usage: run each line of code individually: 
+#   copy and paste onto command line 
+# optimized for running on BioLinux 8 cloud instance through Jetstream
+# note that the qiime conda install requires several GB of disk space
+# adapted from this tutorial: https://docs.qiime2.org/2017.11/install/native/#install-qiime-2-within-a-conda-environment
+# instance details here: https://use.jetstream-cloud.org/application/images/55
+# you should not need to run this script again if you have already installed the software successfully
+
+## test that conda is installed. This will print info about your conda install.
+conda info
+
+## if conda is not installed:
+# download script to install miniconda
+# wget is a command to download files from an online URL (works on Mac, Linux, GitBash)
+wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
+
+# install miniconda. You will be prompted to answer a few questions:
+# press ENTER to review the license agreement, then q to exit the agreement screen
+# type yes followed by ENTER to accept the license terms
+# press ENTER to confirm installation to the home directory, e.g., `/home/user/miniconda2`
+# type yes then ENTER "to prepend the Miniconda2 install location to PATH"
+bash Miniconda2-latest-Linux-x86_64.sh
+
+# reload your profile to include miniconda in your path
+source ~/.bashrc
+
+# test to make sure conda is installed. This will print info about your conda install.
+conda info
+
+## if conda is already installed:
+# install release 2017.11
+conda create -n qiime2-2017.11 --file https://data.qiime2.org/distro/core/qiime2-2017.11-conda-linux-64.txt
+# if asked to proceed in installing packages, type y or yes
+
+# if you have errors during installation:
+#conda env remove -n qiime2-2017.11
+#conda clean -y --all
+# then repeat the `conda create` command above
+
+# clean up install files that aren't needed any longer (this frees up disk space)
+conda clean -y --all
+
+# activate the conda environment
+source activate qiime2-2017.11
+# command prompt should change to include (qiime2-2017.11)
+
+# test qiime installation
+qiime --help
