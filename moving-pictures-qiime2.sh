@@ -4,7 +4,7 @@
 
 ## usage: bash moving-pictures-qiime2.sh 
 # first run commands in qiime2install.txt
-# adapted from this tutorial: https://docs.qiime2.org/2017.11/install/native/#install-qiime-2-within-a-conda-environment
+# adapted from this tutorial: https://docs.qiime2.org/2017.11/tutorials/moving-pictures/
 
 ## activate the environment
 source activate qiime2-2017.10
